@@ -1,33 +1,39 @@
 const express = require('express');
-const logger = require('./logger')
-
+const myBioData=require("../logger/logger.js")
+const printDate = require("../util/helper.js")
+const printMonth =require("../util/helper.js")
+const printFormat =require("../validator/formatter.js")
 const router = express.Router();
 
+router.get('/test-me1', function (req, res) {
+     myBioData.name();
+     
+    res.send('My first ever api!')
+});
 router.get('/test-me', function (req, res) {
-    console.log('I am inside the first route handler')
-    console.log('The endpoint value is', logger.endpoint)
-    console.log('Calling log function')
-    logger.logging()
-    res.send('My first ever api!')
+    printDate.date();
+
+   res.send('My first ever api!')
 });
+router.get('/test-me', function (req, res) {
+    printMonth.Month();
 
-router.get('/test-me2', function (req, res) {
-    console.log('I am inside the second route handler')
-    res.send('My second ever api!')
+   res.send('My first ever api!')
 });
-
-
-router.get('/test-me5', function (req, res) {
-    res.send('My final ever api!')
+router.get('/test-me-3', function (req, res) {
+    printFormat.trimstring();
+   res.send('My first ever api!')
 });
+router.get('/test-me-2', function (req, res) {
+    printFormat.changecaseTsoLower();
 
-router.get('/test-me3', function (req, res) {
-    res.send('My first ever api!')
+   res.send('My first ever api!')
 });
+router.get('/test-me-1', function (req, res) {
+    printFormat.changecaseToUpper();
 
-router.get('/test-me4', function (req, res) {
-    res.send('My first ever api!')
+   res.send({"Firstname" : "Shweta","age" : 26})
+   
+   
 });
-
 module.exports = router;
-// adding this comment for no reason
