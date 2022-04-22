@@ -18,6 +18,10 @@ const createProducts= async function (req, res) {
     let create_products= await prdouct_create.create(data)
     res.send({data: create_products});
 }
-
+const createProducts1= async function (req, res) {
+    let data= req.body
+    let create_products= await prdouct_create.create(data)
+    res.send({data: create_products});
+}
  module.exports.createUser= createUser;
  module.exports.createProducts=createProducts;
