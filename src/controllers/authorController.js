@@ -1,15 +1,8 @@
-const AuthorModel= require("../models/authorModel")
+const author_schema = require("../models/authorModel");
 
-const createAuthor= async function (req, res) {
-    let author = req.body
-    let authorCreated = await AuthorModel.create(author)
-    res.send({data: authorCreated})
-}
-
-const getAuthorsData= async function (req, res) {
-    let authors = await AuthorModel.find()
-    res.send({data: authors})
-}
-
-module.exports.createAuthor= createAuthor
-module.exports.getAuthorsData= getAuthorsData
+const create_author = async function (req, res) {
+  let data = req.body;
+  const author_data = await author_schema.create(data);
+  res.send({ status: true, data: author_data });
+};
+module.exports.create_author = create_author;
