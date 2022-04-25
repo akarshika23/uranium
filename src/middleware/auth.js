@@ -8,19 +8,17 @@ const validateToken = function (req, res, next) {
   if (!token) return res.send({ status: false, msg: "token must be present" });
   next();
 
-  console.log(token);
-
   // If a token is present then decode the token with verify function
   // verify takes two inputs:
   // Input 1 is the token to be decoded
   // Input 2 is the same secret with which the token was generated
   // Check the value of the decoded token yourself
   // res.json({ token: token });
-  let decodedToken = jwt.verify(token, "functionup-thorium");
+  let decodedToken = jwt.verify(token, "functionup-uranium");
   if (!decodedToken) {
     return res.send({ status: false, msg: "token is invalid" });
   } else {
-    // return res.send({ status: true, msg: "token is valid" });
+    res.send({ status: true, msg: "token is valid" });
   }
   next();
 };
